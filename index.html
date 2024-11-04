@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktivní kurzor</title>
+    <style>
+        /* Výchozí obrázek kurzoru */
+        body {
+            cursor: url('cursor-image.png') 32 32, auto;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        /* Centrovaný nadpis */
+        h1 {
+            text-align: center;
+            cursor: crosshair;
+        }
+        /* Centrovaný text */
+        p {
+            text-align: center;
+            font-size: 150%;
+        }
+        /* Centrovaný obrázek */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="special-text">Teď máš kurzor</h1>
+    <p>Přesuň myš přes nadpis a uvidíš Matěje Pechu</p>
+    <p id="different-text">A co teď?</p>
+    
+    <!-- Obrázek uvnitř centrovaného kontejneru -->
+    <div class="container">
+        <img id="image-logo" src="smile.png" alt="smajlik">
+    </div>
+
+    <script>
+        // Definujeme element `differentText`
+        const differentText = document.getElementById("different-text");
+
+        // Přidáme posluchač události na najetí myši pro `differentText`
+        differentText.addEventListener("mouseover", () => {
+            document.body.style.cursor = "url('another-cursor.png') 16 16, auto";
+        });
+
+        // Po opuštění `differentText` vrátíme původní obrázek kurzoru
+        differentText.addEventListener("mouseout", () => {
+            document.body.style.cursor = "url('cursor-image.png') 16 16, auto";
+        });
+
+        // Definujeme element `imageLogo`
+        const imageLogo = document.getElementById("image-logo");
+
+        // Přidáme posluchač události na najetí myši pro `imageLogo`
+        imageLogo.addEventListener("mouseover", () => {
+            document.body.style.cursor = "url('kafon.png') 16 16, auto";
+        });
+
+        // Po opuštění `imageLogo` vrátíme původní obrázek kurzoru
+        imageLogo.addEventListener("mouseout", () => {
+            document.body.style.cursor = "url('cursor-image.png') 16 16, auto";
+        });
+    </script>
+</body>
+</html>
